@@ -17,8 +17,8 @@ class CreateSkillsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('status');
-            $table->string('sort');            
+            $table->string('status')->nullable();;
+            $table->string('sort')->nullable();;            
         });
     }
 

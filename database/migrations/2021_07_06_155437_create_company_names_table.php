@@ -17,13 +17,13 @@ class CreateCompanyNamesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->string('city');
+            $table->string('city')->nullable();;
             $table->integer('fk_location');
-            $table->string('branch');
-            $table->integer('contact_details');
-            $table->string('logo');
-            $table->integer('status');
-            $table->integer('sort');
+            $table->string('branch')->nullable();;
+            $table->integer('contact_details')->nullable();;
+            $table->string('logo')->nullable();;
+            $table->integer('status')->nullable();;
+            $table->integer('sort')->nullable();;
             
         });
     }

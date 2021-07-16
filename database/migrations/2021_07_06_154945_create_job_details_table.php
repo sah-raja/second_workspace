@@ -19,20 +19,20 @@ class CreateJobDetailsTable extends Migration
             $table->string('slug');
             $table->timestamp('posted_date')->nullable();;
             $table->timestamp('deadline')->nullable();;
-            $table->text('short_description');
-            $table->text('long_description');
-            $table->text('key_responsibilities');
-            $table->text('requirements');
+            $table->text('short_description')->nullable();;
+            $table->text('long_description')->nullable();;
+            $table->text('key_responsibilities')->nullable();;
+            $table->text('requirements')->nullable();;
             $table->integer('fk_company');
             $table->integer('fk_category');
             $table->integer('fk_skill');
-            $table->integer('no_of_opeanings');
-            $table->string('position_type');
-            $table->string('experience');
-            $table->string('education');
+            $table->integer('no_of_opeanings')->nullable();;
+            $table->string('position_type')->nullable();;
+            $table->string('experience')->nullable();;
+            $table->string('education')->nullable();;
             $table->integer('fk_location');
-            $table->integer('status');
-            $table->integer('sort');            
+            $table->integer('status')->nullable();;
+            $table->integer('sort')->nullable();;            
         });
     }
 
