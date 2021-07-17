@@ -14,13 +14,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+/* Auth Router for multiple users */
+//Auth::routes();
+require __DIR__.'/authRouter.php';
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-////////////////////////
 
-///////////////////////
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//manual auth routing ends
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/user/welcome', 'HomeController@index')->name('user.welcome');
+Route::get('/employer/welcome', 'HomeController@index')->name('employer.welcome');
+Route::get('/admin/welcome', 'HomeController@index')->name('admin.welcome');
