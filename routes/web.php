@@ -30,4 +30,3 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user/welcome', 'HomeController@index')->name('user.welcome');
 Route::get('/employer/welcome', 'HomeController@index')->name('employer.welcome');
-Route::get('/admin/welcome', 'HomeController@index')->name('admin.welcome');
