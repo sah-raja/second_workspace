@@ -2,8 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-//manual Auth::routes() routing
-//for admin dashboard
+/*
+|--------------------------------------------------------------------------
+| Authentication Routes for users
+|--------------------------------------------------------------------------
+|
+| Authentication Routes for multiple users prepared by Jes Pratap Shakya
+|
+*/
+
+/* Routes for admin dashboard */
 Route::get('/sikaruApanel/login', 'Auth\LoginController@showLoginForm')->name('login.admin');
 Route::post('/sikaruApanel/login', 'Auth\LoginController@loginRole')->name('login.admin');
 Route::get('/sikaruApanel/password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password/confirm.admin');
@@ -14,7 +22,7 @@ Route::post('/sikaruApanel/password/reset', 'Auth\ResetPasswordController@reset'
 Route::get('/sikaruApanel/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset/{token}.admin');
 Route::get('/sikaruApanel/register', 'Auth\RegisterController@showRegistrationForm')->name('register.admin');
 
-//for employer
+/* Routes for employer dashboard */
 Route::get('/employer/login', 'Auth\LoginController@showLoginForm')->name('login.employer');
 Route::post('/employer/login', 'Auth\LoginController@loginRole')->name('login.employer');
 Route::get('/employer/password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password/confirm.employer');
@@ -25,7 +33,7 @@ Route::post('/employer/password/reset', 'Auth\ResetPasswordController@reset')->n
 Route::get('/employer/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset/{token}.employer');
 Route::get('/employer/register', 'Auth\RegisterController@showRegistrationForm')->name('register.employer');
 
-//for job seeker
+/* Routes for job seeker dashboard */
 Route::get('/user/login', 'Auth\LoginController@showLoginForm')->name('login.user');
 Route::post('/user/login', 'Auth\LoginController@loginRole')->name('login.user');
 Route::get('/user/password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password/confirm.user');
@@ -36,5 +44,5 @@ Route::post('/user/password/reset', 'Auth\ResetPasswordController@reset')->name(
 Route::get('/user/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset/{token}.user');
 Route::get('/user/register', 'Auth\RegisterController@showRegistrationForm')->name('register.user');
 
-//logout
+/* Routes for logout */
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
