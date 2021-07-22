@@ -56,8 +56,14 @@ class LoginController extends Controller
         ];
     }
 
+    // public function showLoginForm()
+    // {
+    //     return view('auth.login');
+    // }
+
     protected function loginRole(Request $request){
-        $username = $request->email;
+        $useremail = $request->email;
+        $username = $request->username;
         $url = $request->url();
         $role = '';
         if(str_contains($url,'user')){
@@ -67,16 +73,16 @@ class LoginController extends Controller
         }elseif(str_contains($url,'seeker')){
             $role = 'seeker';
         }
-        $checkUser = User::where(function ($query) use ($username) {
+        $checkUser = User::where(function ($query) use ($username, $useremail) {
             $query->where('username', '=', $username)
-                  ->orWhere('email', '=', $username);
+                  ->orWhere('email', '=', $useremail);
         })->where(function ($query) use ($role) {
             $query->where('role', '=', $role);
-        })->pluck('username');
+        })->first();
         if($checkUser){
-            if($this->login($request)){
-                return redirect()->route($role.'.welcome');
-            }  
+            return $this->login($request); 
+        }else{
+            dd("not registered");
         }
     }
 }

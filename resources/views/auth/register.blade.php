@@ -8,7 +8,17 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        @php
+                        if(Request::is('sikaruApanel/*')){
+                            $route = 'register.admin';
+                        }elseif(Request::is('employer/*')){
+                            $route = 'register.employer';
+                        }elseif(Request::is('user/*')){
+                            $route = 'register.user';
+                        }
+                        @endphp
+
+                        <form method="POST" action="{{ route($route) }}">
                             @csrf
 
                             <div class="form-group row">

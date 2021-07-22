@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -70,6 +71,35 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
         ]);
+    }
+
+    protected function registerRole(Request $request){
+        $useremail = $request->email;
+        $username = $request->username;
+        $url = $request->url();
+        $role = '';
+        if(str_contains($url,'user')){
+            $role = 'user';
+        }elseif(str_contains($url,'employer')){
+            $role = 'employer';
+        }elseif(str_contains($url,'seeker')){
+            $role = 'seeker';
+        }
+        $checkUser = User::where(function ($query) use ($username, $useremail) {
+            $query->where('username', '=', $username)
+                  ->orWhere('email', '=', $useremail);
+        })->where(function ($query) use ($role) {
+            $query->where('role', '=', $role);
+        })->first();
+        
+        if($checkUser){
+            //send message of already registered 
+            dd("already registered");
+        }else{
+            $request->request->add(['role' => $role]);
+            return $this->register($request); 
+        }
     }
 }

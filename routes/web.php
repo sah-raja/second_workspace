@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,14 @@ Route::get('/', function () {
 
 
 //manual auth routing ends
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/welcome', 'HomeController@index')->name('home');
 Route::get('/user/welcome', 'HomeController@index')->name('user.welcome');
 Route::get('/employer/welcome', 'HomeController@index')->name('employer.welcome');
+
+Route::get('/clear-cache-config', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    dd("ok");
+});

@@ -1,0 +1,58 @@
++--------+----------+-------------------------------------+---------------------------------+------------------------------------------------------------------------+------------+
+| Domain | Method   | URI                                 | Name                            | Action                                                                 | Middleware |
++--------+----------+-------------------------------------+---------------------------------+------------------------------------------------------------------------+------------+
+|        | GET|HEAD | /                                   |                                 | Closure                                                                | web        |
+|        | GET|HEAD | api/user                            |                                 | Closure                                                                | api        |
+|        |          |                                     |                                 |                                                                        | auth:api   |
+|        | GET|HEAD | employer/login                      | login.employer                  | App\Http\Controllers\Auth\LoginController@showLoginForm                | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | POST     | employer/login                      | login.employer                  | App\Http\Controllers\Auth\LoginController@loginRole                    | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | POST     | employer/password/confirm           | password/confirm.employer       | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | GET|HEAD | employer/password/confirm           | password/confirm.employer       | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | POST     | employer/password/email             | password/email.employer         | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web        |
+|        | POST     | employer/password/reset             | password/reset.employer         | App\Http\Controllers\Auth\ResetPasswordController@reset                | web        |
+|        | GET|HEAD | employer/password/reset             | password/reset.employer         | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web        |
+|        | GET|HEAD | employer/password/reset/{token}     | password/reset/{token}.employer | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web        |
+|        | GET|HEAD | employer/register                   | register.employer               | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | GET|HEAD | employer/welcome                    | employer.welcome                | App\Http\Controllers\HomeController@index                              | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | GET|HEAD | home                                | home                            | App\Http\Controllers\HomeController@index                              | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | POST     | logout                              | logout                          | App\Http\Controllers\Auth\LoginController@logout                       | web        |
+|        | GET|HEAD | sikaruApanel/login                  | login.admin                     | App\Http\Controllers\Auth\LoginController@showLoginForm                | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | POST     | sikaruApanel/login                  | login.admin                     | App\Http\Controllers\Auth\LoginController@loginRole                    | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | POST     | sikaruApanel/password/confirm       | password/confirm.admin          | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | GET|HEAD | sikaruApanel/password/confirm       | password/confirm.admin          | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | POST     | sikaruApanel/password/email         | password/email.admin            | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web        |
+|        | POST     | sikaruApanel/password/reset         | password/reset.admin            | App\Http\Controllers\Auth\ResetPasswordController@reset                | web        |
+|        | GET|HEAD | sikaruApanel/password/reset         | password/reset.admin            | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web        |
+|        | GET|HEAD | sikaruApanel/password/reset/{token} | password/reset/{token}.admin    | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web        |
+|        | GET|HEAD | sikaruApanel/register               | register.admin                  | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | GET|HEAD | sikaruApanel/welcome                | home                            | App\Http\Controllers\HomeController@index                              | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | POST     | user/login                          | login.user                      | App\Http\Controllers\Auth\LoginController@loginRole                    | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | GET|HEAD | user/login                          | login.user                      | App\Http\Controllers\Auth\LoginController@showLoginForm                | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | GET|HEAD | user/password/confirm               | password/confirm.user           | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | POST     | user/password/confirm               | password/confirm.user           | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
+|        | POST     | user/password/email                 | password/email.user             | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web        |
+|        | GET|HEAD | user/password/reset                 | password/reset.user             | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web        |
+|        | POST     | user/password/reset                 | password/reset.user             | App\Http\Controllers\Auth\ResetPasswordController@reset                | web        |
+|        | GET|HEAD | user/password/reset/{token}         | password/reset/{token}.user     | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web        |
+|        | GET|HEAD | user/register                       | register.user                   | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web        |
+|        |          |                                     |                                 |                                                                        | guest      |
+|        | GET|HEAD | user/welcome                        | user.welcome                    | App\Http\Controllers\HomeController@index                              | web        |
+|        |          |                                     |                                 |                                                                        | auth       |
++--------+----------+-------------------------------------+---------------------------------+------------------------------------------------------------------------+------------+

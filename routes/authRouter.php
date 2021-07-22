@@ -21,6 +21,7 @@ Route::get('/sikaruApanel/password/reset', 'Auth\ForgotPasswordController@showLi
 Route::post('/sikaruApanel/password/reset', 'Auth\ResetPasswordController@reset')->name('password/reset.admin');
 Route::get('/sikaruApanel/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset/{token}.admin');
 Route::get('/sikaruApanel/register', 'Auth\RegisterController@showRegistrationForm')->name('register.admin');
+Route::post('/sikaruApanel/register', 'Auth\RegisterController@registerRole')->name('register.admin');
 
 /* Routes for employer dashboard */
 Route::get('/employer/login', 'Auth\LoginController@showLoginForm')->name('login.employer');
@@ -32,6 +33,7 @@ Route::get('/employer/password/reset', 'Auth\ForgotPasswordController@showLinkRe
 Route::post('/employer/password/reset', 'Auth\ResetPasswordController@reset')->name('password/reset.employer');
 Route::get('/employer/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset/{token}.employer');
 Route::get('/employer/register', 'Auth\RegisterController@showRegistrationForm')->name('register.employer');
+Route::post('/employer/register', 'Auth\RegisterController@registerRole')->name('register.employer');
 
 /* Routes for job seeker dashboard */
 Route::get('/user/login', 'Auth\LoginController@showLoginForm')->name('login.user');
@@ -43,6 +45,7 @@ Route::get('/user/password/reset', 'Auth\ForgotPasswordController@showLinkReques
 Route::post('/user/password/reset', 'Auth\ResetPasswordController@reset')->name('password/reset.user');
 Route::get('/user/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password/reset/{token}.user');
 Route::get('/user/register', 'Auth\RegisterController@showRegistrationForm')->name('register.user');
+Route::post('/user/register', 'Auth\RegisterController@registerRole')->name('register.user');
 
 /* Routes for logout */
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
