@@ -14,11 +14,11 @@ class CreateSkillsTable extends Migration
     public function up()
     {
         Schema::create('skills', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
+            $table->increments('id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
             $table->string('status')->nullable();
-            $table->string('sort')->nullable();           
+            $table->string('sort')->nullable();            
         });
     }
 
