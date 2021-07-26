@@ -16,9 +16,14 @@ class AccessControl
      */
     public function handle($request, Closure $next, $role)
     {
-        if (!$request->user()->hasRole($role)) {
-            abort(401, 'This action is unauthorized.');
+        $roles = explode('|', $role);
+        if ($request->user()) {
+            if (!in_array($request->user()->role, $roles)) {
+                abort(401);
+            }
+            return $next($request);
+        } else {
+            abort(401);
         }
-        return $next($request);
     }
 }
