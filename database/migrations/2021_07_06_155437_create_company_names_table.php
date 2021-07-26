@@ -17,8 +17,8 @@ class CreateCompanyNamesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
-            $table->string('city')->nullable();
-            $table->integer('fk_location')->nullable();
+            $table->integer('fk_city')->nullable();
+            $table->string('location')->nullable();
             $table->string('branch')->nullable();
             $table->integer('contact_details')->nullable();
             $table->string('logo')->nullable();

@@ -28,8 +28,8 @@
 			<tbody>
             @foreach($company as $company)
 			<tr>
-                <td><a href="/{{ $company->id }}/company_edit"> Edit </a></td>
-                <td><a href="/{{ $company->id }}/company_delete"> Delete </a></td> 
+                <td><a href="{{ route('company.edit',$company->id) }}"> Edit </a></td>
+                <td><a href="{{ route('company.delete',$company->id) }}"> Delete </a></td> 
                 <td> {{ $company->id }}</td>
 				<td> {{ $company->name }}</td>
 				<td> {{ $company->contact_details  }}</td>

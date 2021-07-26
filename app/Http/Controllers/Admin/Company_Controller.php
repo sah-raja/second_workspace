@@ -15,7 +15,7 @@ class Company_Controller extends Controller
      */
     public function index()
     {
-        return view('company_details');
+        return view('admin.company.companyDetails');
     }
 
     /**
@@ -53,6 +53,7 @@ class Company_Controller extends Controller
             'contact_details'=>$request -> input('contact_details'),
             'logo'=> $newImagename 
         ]); 
+        return redirect()->route('company.view');
     }
 
     /**
@@ -75,7 +76,7 @@ class Company_Controller extends Controller
     public function company_edit($id)
     {   
         $company =company_name::find($id);
-        return view('company_edit')
+        return view('admin.company.companyEdit')
         ->with('company' ,$company);
     }
 
@@ -89,7 +90,8 @@ class Company_Controller extends Controller
     public function company_details_update(Request $request, $id)
     {   $newImagename = time() . '-' . $request->company_name . '.' . $request->logo->extension();
         $request -> logo->move(public_path('images'),$newImagename);
-        dd(newImagename);
+        // dd(newImagename);
+       
         $company = company_name::where('id',$id)
         ->update( [
             'name'=>$request -> input('company_name'),
@@ -97,7 +99,8 @@ class Company_Controller extends Controller
             'logo'=>$newImagename
         ]);
 
-        return redirect('company_view');
+        return redirect()->route('company.view');
+       
     }
 
     /**
@@ -115,7 +118,7 @@ class Company_Controller extends Controller
 
         $company = company_name::all(); 
        
-        return view('company_view',[
+        return view('admin.company.companyView',[
            'company' => $company]);
        
    }
@@ -123,7 +126,15 @@ class Company_Controller extends Controller
    public function company_delete($id){
         
     $company= company_name::find($id);
+
+
+    // $image_name = \DB::table('company_names')
+    // ->where('company_names.id', $id)->first('company_names.logo');
+    
+    // @unlink('/images/');
+
+    parent::delete();
     $company ->delete();
-    return redirect('company_view');  
+    return redirect()->route('company.view');
   }
 }

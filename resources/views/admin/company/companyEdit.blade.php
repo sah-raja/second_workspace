@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{  $company->id }}/company_details_update" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('company.update',$company->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div> 
         <label>Company Name</label>
