@@ -14,9 +14,26 @@
          <input type="text" class="" name="company_name" value="{{ $company->name }}" >
     </div>
     <br>
+        <div> 
+            <label>City</label>
+            <select name="city" id="city" >               
+                    @foreach($city as $city)
+                    <option value="{{ $city->id }}" 
+                        @if( $city_selected->id == $city->id ) selected
+                        @endif>
+                        {{ $city->name }}
+                    @endforeach
+            </select>
+        </div>
+        <br>
     <div> 
         <label>Contact Details </label>
          <input type="text" class="" name="contact_details" value="{{ $company->contact_details }}" >
+    </div>
+    <br>
+    <div> 
+        <label>Location</label>
+        <input type="text" class="" name="location" value="{{ $company->location }}">
     </div>
     <br>
     <div> 

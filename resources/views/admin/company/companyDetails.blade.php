@@ -15,12 +15,30 @@
     </div>
     <br>
     <div> 
+        <label>City</label>
+        <select name="city" id="city" > 
+            <option selected>Choose ....</option >
+                @foreach($city as $cities)
+                <option value="{{ $cities->id }}" >
+                    {{ $cities->name}}
+                    @endforeach
+                </option>
+                
+        </select>
+    </div>
+    <br>
+        <div> 
+            <label>Location</label>
+            <input type="text" class="" name="location">
+        </div>
+        <br>
+    <div> 
         <label>Contact Details </label>
          <input type="text" class="" name="contact_details" value="" >
     </div>
     <br>
     <div> 
-        <label>File </label>
+        <label>Logo </label>
         <input type="file" name="logo" >
     </div>
     <br>
