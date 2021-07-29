@@ -10,7 +10,7 @@ use App\Models\job_detail;
 use App\Models\city;
 use App\Models\skill;
 
-class JobDetails_Controller extends Controller
+class JobDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -98,6 +98,7 @@ class JobDetails_Controller extends Controller
         // dd($city_selected);
         // dd($categogry_selected);
         $job_detail =job_detail::find($id);
+        //  dd($job_detail->posted_date->format('m/d/Y') ); 
         return view('admin.jobDetails.jobDetailsEdit',[
             'categories' => $categories,
             'city' =>$city,

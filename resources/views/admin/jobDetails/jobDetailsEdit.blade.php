@@ -56,12 +56,13 @@
         <br>
         <div> 
             <label>Posted Date</label>
-             <input type="date" class="" name="posted_date" value="{{ $job_detail->posted_date }}">
+             <input type="date" class="" name="posted_date" value="{{ $job_detail->posted_date->format('Y-m-d')  }}"
+             > 
         </div>
         <br>
         <div> 
             <label>Apply Before</label>
-            <input type="date" class="" name="apply_before" value="{{ $job_detail->apply_before }}">
+            <input type="date" class="" name="apply_before" value="{{ $job_detail->deadline->format('Y-m-d')  }}">
         </div>
         <br>
         <div> 

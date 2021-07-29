@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\company_name;
+use App\Models\city;
 
-class Company_Controller extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,11 @@ class Company_Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('admin.company.companyDetails');
+    {    $city = city::all();
+
+        return view('admin.company.companyDetails',[
+            'city' => $city
+        ]);
     }
 
     /**
@@ -41,6 +45,7 @@ class Company_Controller extends Controller
             'company_name' =>'required',
             'contact_details' =>'required',
             'logo'=> 'required|mimes:jpg,png,jpeg|max:5048'
+            
         ]);
 
         $newImagename = time() . '-' . $request->company_name . '.' . $request->logo->extension();
@@ -51,7 +56,9 @@ class Company_Controller extends Controller
         $company_name = company_name::create([
             'name'=>$request -> input('company_name'),
             'contact_details'=>$request -> input('contact_details'),
-            'logo'=> $newImagename 
+            'logo'=> $newImagename ,
+            'fk_city'=> $request -> input('city'),
+            'location'=> $request -> input('location'),
         ]); 
         return redirect()->route('company.view');
     }
@@ -74,10 +81,20 @@ class Company_Controller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function company_edit($id)
-    {   
+    {    
+        
+        $city_selected = \DB::table('company_names')
+        ->join('cities','company_names.fk_city','=','cities.id')
+        ->where('company_names.id', $id)->first('cities.id');
+
+        // dd(\DB::table('company_names')->where('company_names.id', $id));
+        $city = city::all();
+
         $company =company_name::find($id);
-        return view('admin.company.companyEdit')
-        ->with('company' ,$company);
+        return view('admin.company.companyEdit',[
+            'city' =>$city,
+            'city_selected'=>$city_selected,
+        ]) ->with('company' ,$company);
     }
 
     /**
@@ -133,7 +150,7 @@ class Company_Controller extends Controller
     
     // @unlink('/images/');
 
-    parent::delete();
+    // parent::delete();
     $company ->delete();
     return redirect()->route('company.view');
   }

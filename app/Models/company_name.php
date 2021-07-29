@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class company_name extends Model
 {
     use HasFactory;
-    protected $fillable=['id' ,'name','slug','city','fk_location','branch','contact_details','logo','status','sort'];
+    protected $fillable=['id' ,'name','slug','fk_city','location','branch','contact_details','logo','status','sort'];
     public $timestamps = false;
 }
