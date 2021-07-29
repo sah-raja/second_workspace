@@ -70,8 +70,8 @@ class LoginController extends Controller
             $role = 'user';
         }elseif(str_contains($url,'employer')){
             $role = 'employer';
-        }elseif(str_contains($url,'seeker')){
-            $role = 'seeker';
+        }elseif(str_contains($url,'sikaruApanel')){
+            $role = 'admin';
         }
         $checkUser = User::where(function ($query) use ($username, $useremail) {
             $query->where('username', '=', $username)
