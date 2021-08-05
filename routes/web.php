@@ -22,20 +22,19 @@ require __DIR__.'/authRouter.php';
 /* Admin Router */
 require __DIR__.'/adminRouter.php';
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-//manual auth routing ends
 Route::get('/welcome', 'HomeController@index')->name('home');
 Route::get('/user/welcome', 'HomeController@index')->name('user.welcome');
 Route::get('/employer/welcome', 'HomeController@index')->name('employer.welcome');
 
-Route::get('/clear-cache-config', function() {
-    Artisan::call('cache:clear');
-    Artisan::call('route:clear');
-    Artisan::call('config:clear');
-    Artisan::call('view:clear');
-    dd("ok");
+// Routing for website front end
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/clear-cache-config', function() {
+        Artisan::call('cache:clear');
+        Artisan::call('route:clear');
+        Artisan::call('config:clear');
+        Artisan::call('view:clear');
+        dd("ok");
+    });
+
+    Route::GET('/', 'WebController@landing')->name('index');
 });
