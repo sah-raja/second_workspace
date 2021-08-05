@@ -43,9 +43,6 @@
                         <li class="menu-item"><a href="" class="menu-link">test</a></li> --}}
                         <li class="menu-item"><a class="menu-link" href="{{ route('register.admin') }}"> Admin Register </a></li>
                         <li class="menu-item"><a class="menu-link" href="{{ route('login.admin') }}"> Admin Login </a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('register.user') }}"> User Register </a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('login.user') }}"> User Login </a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('register.employer') }}"> Employer Register </a></li>
                         <li class="menu-item"><a class="menu-link" href="{{ route('login.employer') }}"> Employer Login </a></li>
 
                     </ul>
@@ -99,9 +96,9 @@
     </div>
     <section class="login-div ">
         <span class="">Search, Apply & Get Job: FREE</span>
-        <button class="btn btn-success register my-auto">Register</button>
-        <button class="btn btn-danger login my-auto">Login</button>
-        <i class="fas fa-building"></i><a href="" class="employer"> Are You an Employer?</a>
+        <a href="{{ route('register.user') }}"><button class="btn btn-success register my-auto">Register</button></a>
+        <a href="{{ route('login.user') }}"><button class="btn btn-danger login my-auto">Login</button></a>
+        <i class="fas fa-building"></i><a href="{{ route('register.employer') }}" class="employer"> Are You an Employer?</a>
     </section>
     <footer id="footer" class="footer">
         <div class="container">
