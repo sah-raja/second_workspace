@@ -94,12 +94,16 @@
 
         {{-- main content ends here --}}
     </div>
-    <section class="login-div ">
-        <span class="">Search, Apply & Get Job: FREE</span>
-        <a href="{{ route('register.user') }}"><button class="btn btn-success register my-auto">Register</button></a>
-        <a href="{{ route('login.user') }}"><button class="btn btn-danger login my-auto">Login</button></a>
-        <i class="fas fa-building"></i><a href="{{ route('register.employer') }}" class="employer"> Are You an Employer?</a>
-    </section>
+    
+    @if(!str_contains(Request::url(),'register') || !str_contains(Request::url(),'login'))
+        <section class="login-div ">
+            <span class="">Search, Apply & Get Job: FREE</span>
+            <a href="{{ route('register.user') }}"><button class="btn btn-success register my-auto">Register</button></a>
+            <a href="{{ route('login.user') }}"><button class="btn btn-danger login my-auto">Login</button></a>
+            <i class="fas fa-building"></i><a href="{{ route('register.employer') }}" class="employer"> Are You an Employer?</a>
+        </section>
+    @endif
+
     <footer id="footer" class="footer">
         <div class="container">
             <div class="row">
