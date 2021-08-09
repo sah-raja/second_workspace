@@ -2,6 +2,19 @@
 
 @section('content')
 
+    @php
+    if (Request::is('sikaruApanel/*')) {
+        $route = 'register.admin';
+        $title = 'Admin';
+    } elseif (Request::is('employer/*')) {
+        $route = 'register.employer';
+        $title = 'Employer';
+    } elseif (Request::is('user/*')) {
+        $route = 'register.user';
+        $title = '';
+    }
+    @endphp
+
     <div class="banner page-header relative">
         <div class="container">
             <form class="card card-sm">
@@ -10,7 +23,7 @@
                         <img src="{{ asset('frontend/assets/img/sikaru white.png') }}" class="img-fluid" alt="" srcset="">
                     </div>
                     <div class="col posting">
-                        <h3>{{ __('Register') }}</h3>
+                        <h3>{{ $title.' '.__('Register') }}</h3>
                         {{-- <p>Login to start your new journey</p> --}}
                     </div>
                 </div>
@@ -23,15 +36,6 @@
 
         <!-- Registeration Form -->
         <div class="register-form">
-            @php
-                if (Request::is('sikaruApanel/*')) {
-                    $route = 'register.admin';
-                } elseif (Request::is('employer/*')) {
-                    $route = 'register.employer';
-                } elseif (Request::is('user/*')) {
-                    $route = 'register.user';
-                }
-            @endphp
 
             <form method="POST" action="{{ route($route) }}">
                 @csrf

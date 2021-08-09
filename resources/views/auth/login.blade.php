@@ -1,6 +1,18 @@
 @extends('layouts.auth')
 
 @section('content')
+    @php
+    if (Request::is('sikaruApanel/*')) {
+        $route = 'login.admin';
+        $title = 'Admin Panel Dashboard';
+    } elseif (Request::is('employer/*')) {
+        $route = 'login.employer';
+        $title = 'Employer Dashboard';
+    } elseif (Request::is('user/*')) {
+        $route = 'login.user';
+        $title = '';
+    }
+    @endphp
 
     <div class="banner page-header relative">
         <div class="container">
@@ -10,7 +22,7 @@
                         <img src="{{ asset('frontend/assets/img/sikaru white.png') }}" class="img-fluid" alt="" srcset="">
                     </div>
                     <div class="col posting">
-                        <h3>{{ __('Register') }}</h3>
+                        <h3>{{ $title.' '.__('Login') }}</h3>
                         {{-- <p>Login to start your new journey</p> --}}
                     </div>
                 </div>
@@ -23,15 +35,6 @@
 
         <!-- Registeration Form -->
         <div class="register-form">
-            @php
-                if (Request::is('sikaruApanel/*')) {
-                    $route = 'login.admin';
-                } elseif (Request::is('employer/*')) {
-                    $route = 'login.employer';
-                } elseif (Request::is('user/*')) {
-                    $route = 'login.user';
-                }
-            @endphp
 
             <form method="POST" action="{{ route($route) }}">
                 @csrf
@@ -100,7 +103,7 @@
 
                     <!-- Already Registered -->
                     <div class="text-center w-100">
-                        <p class="text-muted font-weight-bold">Not  Registered? <a href="login.html"
+                        <p class="text-muted font-weight-bold">Not Registered? <a href="login.html"
                                 class="text-blue ml-2">Register Now</a></p>
                     </div>
 
