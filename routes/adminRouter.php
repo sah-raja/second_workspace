@@ -20,4 +20,5 @@ Route::middleware(['access-control:admin'])->group(function () {
     Route::POST('/sikaruApanel/{id}/company_details_update',  'Admin\CompanyController@company_details_update')->name('company.update');
     Route::GET('/sikaruApanel/{id}/company_delete',  'Admin\CompanyController@company_delete')->name('company.delete');
 
+    
 });
