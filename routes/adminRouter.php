@@ -2,10 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/sikaruApanel/welcome', 'HomeController@index')->name('home');
-
-
 Route::middleware(['access-control:admin'])->group(function () {
+    Route::get('/sikaruApanel/welcome', 'Admin\WelcomeController@index')->name('admin.welcome');
+    
     //Job Details
     Route::resource('/sikaruApanel/job-details', 'Admin\JobDetailsController');
     Route::GET('/sikaruApanel/job_view', 'Admin\JobDetailsController@job_view')->name('job.view');

@@ -17,18 +17,14 @@ use Illuminate\Support\Facades\Artisan;
 
 /* Auth Router for multiple users */
 //Auth::routes();
-require __DIR__.'/authRouter.php';
+require __DIR__ . '/authRouter.php';
 
 /* Admin Router */
-require __DIR__.'/adminRouter.php';
-
-Route::get('/welcome', 'HomeController@index')->name('home');
-Route::get('/user/welcome', 'HomeController@index')->name('user.welcome');
-Route::get('/employer/welcome', 'HomeController@index')->name('employer.welcome');
+require __DIR__ . '/adminRouter.php';
 
 // Routing for website front end
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/clear-cache-config', function() {
+    Route::get('/clear-cache-config', function () {
         Artisan::call('cache:clear');
         Artisan::call('route:clear');
         Artisan::call('config:clear');
@@ -37,4 +33,16 @@ Route::group(['middleware' => 'guest'], function () {
     });
 
     Route::GET('/', 'WebController@landing')->name('index');
+});
+
+Route::middleware(['access-control:user|employer|admin'])->group(function () {
+    Route::get('/welcome', 'HomeController@index')->name('home');
+});
+
+Route::middleware(['access-control:user'])->group(function () {
+    Route::get('/user/welcome', 'User\WelcomeController@index')->name('user.welcome');
+});
+
+Route::middleware(['access-control:employer'])->group(function () {
+    Route::get('/employer/welcome', 'Employer\WelcomeController@index')->name('employer.welcome');
 });
