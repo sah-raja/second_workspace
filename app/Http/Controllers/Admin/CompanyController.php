@@ -108,13 +108,18 @@ class CompanyController extends Controller
     {   $newImagename = time() . '-' . $request->company_name . '.' . $request->logo->extension();
         $request -> logo->move(public_path('images'),$newImagename);
         // dd(newImagename);
-       
+        $company_old = company_name::where('id',$id)->first('logo');
+        $path=public_path('images') . "\\" .$company_old->logo;
+        if (file_exists($path)) {
+        @unlink($path);
+
         $company = company_name::where('id',$id)
         ->update( [
             'name'=>$request -> input('company_name'),
             'contact_details'=> $request -> input('contact_details'),
             'logo'=>$newImagename
-        ]);
+        ]);  
+    }
 
         return redirect()->route('company.view');
        
@@ -143,14 +148,11 @@ class CompanyController extends Controller
    public function company_delete($id){
         
     $company= company_name::find($id);
+    $path=public_path('images') . "\\" .$company->logo;
+    if (file_exists($path)) {
+        @unlink($path);
+    }
 
-
-    // $image_name = \DB::table('company_names')
-    // ->where('company_names.id', $id)->first('company_names.logo');
-    
-    // @unlink('/images/');
-
-    // parent::delete();
     $company ->delete();
     return redirect()->route('company.view');
   }
