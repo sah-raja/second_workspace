@@ -1,108 +1,153 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
 
-                    <div class="card-body">
-                        @php
-                        if(Request::is('sikaruApanel/*')){
-                            $route = 'register.admin';
-                        }elseif(Request::is('employer/*')){
-                            $route = 'register.employer';
-                        }elseif(Request::is('user/*')){
-                            $route = 'register.user';
-                        }
-                        @endphp
+    @php
+    if (Request::is('sikaruApanel/*')) {
+        $route = 'register.admin';
+        $title = 'Admin';
+    } elseif (Request::is('employer/*')) {
+        $route = 'register.employer';
+        $title = 'Employer';
+    } elseif (Request::is('user/*')) {
+        $route = 'register.user';
+        $title = '';
+    }
+    @endphp
 
-                        <form method="POST" action="{{ route($route) }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                        name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                                    <label for="username" class="col-md-4 control-label">Username</label>
-                                    <div class="col-md-6">
-                                        <input id="username" type="text" class="form-control" name="username"
-                                            value="{{ old('username') }}" required>
-                                        @if ($errors->has('username'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('username') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                        name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="new-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password-confirm"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control"
-                                        name="password_confirmation" required autocomplete="new-password">
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Register') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+    <div class="banner page-header relative">
+        <div class="container">
+            <form class="card card-sm">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto logo">
+                        <img src="{{ asset('frontend/assets/img/sikaru white.png') }}" class="img-fluid" alt="" srcset="">
+                    </div>
+                    <div class="col posting">
+                        <h3>{{ $title.' '.__('Register') }}</h3>
+                        {{-- <p>Login to start your new journey</p> --}}
                     </div>
                 </div>
-            </div>
+            </form>
+
         </div>
     </div>
+
+    <div class="register-section">
+
+        <!-- Registeration Form -->
+        <div class="register-form">
+
+            <form method="POST" action="{{ route($route) }}">
+                @csrf
+                <div class="row">
+
+                    <!-- First Name -->
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="name" type="text" placeholder="Full Name"
+                            class="form-control bg-white border-left-0 border-md @error('name') is-invalid @enderror"
+                            name="name" value="{{ old('name') }}" required autocomplete="name">
+
+                        @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- username --}}
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="username" type="text" placeholder="Username"
+                            class="form-control bg-white border-left-0 border-md @error('username') is-invalid @enderror"
+                            name="username" value="{{ old('username') }}" required autocomplete="username">
+
+                        @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- email --}}
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="email" type="email" placeholder="E-Mail Address"
+                            class="form-control bg-white border-left-0 border-md @error('email') is-invalid @enderror"
+                            name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- password --}}
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="password" type="password" placeholder="Password"
+                            class="form-control bg-white border-left-0 border-md @error('password') is-invalid @enderror"
+                            name="password" required autocomplete="new-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    {{-- confirm password --}}
+                    <div class="input-group col-lg-6 mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                <i class="fa fa-user text-muted"></i>
+                            </span>
+                        </div>
+                        <input id="password-confirm" type="password" placeholder="Confirm Password"
+                            class="form-control bg-white border-left-0 border-md " name="password_confirmation" required
+                            autocomplete="new-password">
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group col-lg-12 mx-auto mb-0">
+                        <button type="submit" class="btn btn-blue btn-block py-2">
+                            <span class="font-weight-bold">Create your account</span>
+                        </button>
+                    </div>
+
+                    <!-- Already Registered -->
+                    <div class="text-center w-100">
+                        <p class="text-muted font-weight-bold">Already Registered? <a href="login.html"
+                                class="text-blue ml-2">Login</a></p>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
 @endsection
