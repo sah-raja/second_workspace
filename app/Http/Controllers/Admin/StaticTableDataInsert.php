@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\category;
 
 class StaticTableDataInsert extends Controller
 {
@@ -34,19 +35,11 @@ class StaticTableDataInsert extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        dd($request->all());
-        // $this ->validate ($request ,[
-        //     'category' => 'required'
-        // ]
-        // );
-
-        $category = new category([
-            'category'=> $request->get('category')
-        ]);
-        $category->save();
-
-        return redirect()-> route('admin.staticTableData.insertCategory');
+    {  
+        $category = category::create([
+            'name'=>$request -> input('category')]);
+    
+        return view('admin.staticTableData.insertCategory');
     }
 
     /**

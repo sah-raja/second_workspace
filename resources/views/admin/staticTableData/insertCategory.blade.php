@@ -12,7 +12,8 @@
             <h1> Insert into Category Table </h1>
         </header>
     </div>
-    <form method ="POST" action ="{{ route('category-add.store') }}">
+    <form  action ="{{ route('category-add.store') }}" method ="POST">
+        @csrf 
     <div>
         <label>Add to Category list </label>
         <input type="text" class="" name="category" >
