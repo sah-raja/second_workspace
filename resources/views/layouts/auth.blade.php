@@ -50,7 +50,7 @@
         <div class="navigation  sticky-top">
             <nav class="navbar navbar-expand-lg bg-white">
                 <div class="container">
-                    <a class="navbar-brand" href="#"><img src="{{ asset('frontend/assets/img/sikaru blue.png') }}"
+                    <a class="navbar-brand" href="{{ route('index') }}"><img src="{{ asset('frontend/assets/img/sikaru blue.png') }}"
                             alt="" class="logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"

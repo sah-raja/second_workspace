@@ -2,10 +2,10 @@
 
 @section('content')
     @php
-    if (Request::is('sikaruApanel/*')) {
+    if (Request::is('sikaruApanel/*') || Request::is('sikaruApanel')) {
         $route = 'login.admin';
         $title = 'Admin Panel Dashboard';
-    } elseif (Request::is('employer/*')) {
+    }elseif (Request::is('employer/*')) {
         $route = 'login.employer';
         $title = 'Employer Dashboard';
     } elseif (Request::is('user/*')) {

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Routes for admin dashboard */
+Route::get('/sikaruApanel', 'Auth\LoginController@showLoginForm')->name('admin');
 Route::get('/sikaruApanel/login', 'Auth\LoginController@showLoginForm')->name('login.admin');
 Route::post('/sikaruApanel/login', 'Auth\LoginController@loginRole')->name('login.admin');
 Route::get('/sikaruApanel/password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password/confirm.admin');
@@ -48,4 +49,4 @@ Route::get('/user/register', 'Auth\RegisterController@showRegistrationForm')->na
 Route::post('/user/register', 'Auth\RegisterController@registerRole')->name('register.user');
 
 /* Routes for logout */
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
