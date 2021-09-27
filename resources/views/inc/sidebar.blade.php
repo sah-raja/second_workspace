@@ -61,7 +61,35 @@
                         </a>
                     </li>
                 </ul>
-            </li>         
+            </li> 
+            <!-- Insert new city -->
+            <li class="nav-item">
+                <a href='../../sikaruApanel/city-add' id="insert_city" class="nav-link">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>Insert City</p>
+                </a>
+            </li> 
+            <!-- View cities -->
+            <li class="nav-item">
+                <a href='../../sikaruApanel/city-view' id="view_city" class="nav-link">
+                <i class="fa fa-eye nav-icon"></i>
+                <p>View City</p>
+                </a>
+            </li>  
+            <!-- Insert new company -->
+            <li class="nav-item">
+                <a href='../../sikaruApanel/company-details' id="company-details" class="nav-link">
+                <i class="fa fa-plus nav-icon"></i>
+                <p>Insert Company</p>
+                </a>
+            </li> 
+            <!-- View companies -->
+            <li class="nav-item">
+                <a href='../../sikaruApanel/company_view' id="company_view" class="nav-link">
+                <i class="fa fa-eye nav-icon"></i>
+                <p>View Company</p>
+                </a>
+            </li>        
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

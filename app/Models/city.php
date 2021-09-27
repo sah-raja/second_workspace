@@ -9,4 +9,5 @@ class city extends Model
 {
     use HasFactory;
     protected $fillable=['id' ,'name','slug','status','sort'];
+    public $timestamps = false;
 }

@@ -19,5 +19,12 @@ Route::middleware(['access-control:admin'])->group(function () {
     Route::POST('/sikaruApanel/{id}/company_details_update',  'Admin\CompanyController@company_details_update')->name('company.update');
     Route::GET('/sikaruApanel/{id}/company_delete',  'Admin\CompanyController@company_delete')->name('company.delete');
 
-    Route::resource('/sikaruApanel/category-add', 'Admin\StaticTableDataInsert');
+    //Cities Details
+    Route::resource('/sikaruApanel/city-add', 'Admin\StaticTableDataInsert');
+    Route::GET('/sikaruApanel/city-add', 'Admin\StaticTableDataInsert@insert_city');
+    Route::POST('/sikaruApanel/city-add', 'Admin\StaticTableDataInsert@create_city');
+    Route::GET('/sikaruApanel/city-view', 'Admin\StaticTableDataInsert@view_city');
+    Route::GET('/sikaruApanel/delete_city/{id}', 'Admin\StaticTableDataInsert@delete_city');
+    Route::GET('/sikaruApanel/update_city/{id}', 'Admin\StaticTableDataInsert@update_city');
+    Route::POST('/sikaruApanel/update_city/{id}', 'Admin\StaticTableDataInsert@set_city');
 });

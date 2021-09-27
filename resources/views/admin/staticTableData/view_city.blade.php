@@ -1,6 +1,6 @@
 @extends('layouts.admin')
-
 @section('content')
+
 <div class="container-fluid">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -19,39 +19,36 @@
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
-	<div style='padding:10px 50px;'>
+
+  <!-- table for viewing city -->
+  <div style='padding:20px 90px;'>
+    @if (session('msg'))
+      <div class="alert alert-primary">
+        {{ session('msg') }}
+      </div>
+    @endif
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Jobs Posted</h3>
+                <h3 class="card-title">City Details</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>
                     <tr>
+                      <th>City</th>
                       <th>Action</th>
-                      <th>S.N</th>
-                      <th>Company Name </th>
-                      <th>Contact Details </th>
-                      <th>Logo</th> 
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($company as $company)
-                    <tr>
-                      <td style='width:200px'>
-                        <a href="{{ route('company.edit',$company->id) }}" role='button' class='btn btn-success'>Edit</a>
-                        <a href="{{ route('company.delete',$company->id) }}" role='button' class='btn btn-danger'>Delete</a>
-                      </td> 
-                      <td> {{ $company->id }}</td>
-                      <td> {{ $company->name }}</td>
-                      <td> {{ $company->contact_details  }}</td>
-                      @if(isset($company->logo))
-                      <td> <img src="{{ asset('images/'.$company->logo) }}" style="width: 50px; height: 50px;"> </td>
-                      @else
-                      <td style='width: 60px; height: 60px;'></td>
-                      @endif
-                    </tr>
+                    @foreach($city as $record)
+                      <tr>
+                        <td>{{$record->name}}</td>
+                        <td>
+                          <a href='update_city/{{$record->id}}' role='button' class='btn btn-success'>Update</a>
+                          <a href='delete_city/{{$record->id}}' role='button' class='btn btn-danger'>Delete</a>
+                        </td>
+                      </tr>
                     @endforeach
                   </tbody>
                 </table>
@@ -68,6 +65,12 @@
               </div>
             </div>
             <!-- /.card -->
-	</div>
+  </div>
+  <!-- ./col -->
+    <div>
+    </div>
+  <!-- /.row -->
+
 </div>
+
 @endsection
