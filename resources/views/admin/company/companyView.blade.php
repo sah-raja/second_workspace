@@ -7,12 +7,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h2 class="m-0">Dashboard</h2>
+          <h2 class="m-0">View Company</h2>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('company-details.index')}}" role='button' class='btn btn-secondary'>Add Company</a></li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -21,10 +20,6 @@
   <!-- /.content-header -->
 	<div style='padding:10px 50px;'>
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Jobs Posted</h3>
-              </div>
-              <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered">
                   <thead>

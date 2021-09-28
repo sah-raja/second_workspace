@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h2 class="m-0">Dashboard</h2>
+          <h2 class="m-0">Add City</h2>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
   <div style='margin:50px 100px;'>
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Insert City</h3>
+                <!-- <h3 class="card-title">Insert City</h3> -->
               </div>
               <!-- /.card-header -->
               <!-- session message -->
@@ -48,7 +48,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Save</button>
-                  <a href="city-view" role="button" class="btn btn-default float-right">See Cities</a>
+                  <a href="{{ route('city-view')}}" role="button" class="btn btn-default float-right">See Cities</a>
                 </div>
                 <!-- /.card-footer -->
               </form>

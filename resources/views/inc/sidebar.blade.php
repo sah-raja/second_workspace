@@ -29,7 +29,54 @@
             </li> 
 
             <!-- other menus -->
-
+            <!-- Menu for city -->
+            <li class="nav-item">
+                <a href="" class="nav-link" id="city">
+                    <i class="nav-icon fas fa-city"></i>
+                    <p>
+                        City
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview pl-4" style="display: none;">
+                    <li class="nav-item">
+                        <a href="{{route('city-add')}}" id="insert_city" class="nav-link">
+                            <i class="fa fa-plus nav-icon"></i>
+                            <p>Add City</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('city-view')}}" id="view_city" class="nav-link">
+                            <i class="fa fa-eye nav-icon"></i>
+                            <p>View City</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- Menu for company -->
+            <li class="nav-item">
+                <a href="" class="nav-link" id="company">
+                    <i class="nav-icon fas fa-building"></i>
+                    <p>
+                        Company
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview pl-4" style="display: none;">
+                    <li class="nav-item">
+                        <a href="{{ route('company-details.index')}}" id="company-details" class="nav-link">
+                            <i class="fa fa-plus nav-icon"></i>
+                            <p>Add Company</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('company.view')}}" id="company_view" class="nav-link">
+                            <i class="fa fa-eye nav-icon"></i>
+                            <p>View Company</p>
+                        </a>
+                    </li>
+                </ul>
+            </li> 
             <!-- Menu for user -->
             <li class="nav-item">
                 <a href="" class="nav-link" id="adminProfile">
@@ -61,35 +108,7 @@
                         </a>
                     </li>
                 </ul>
-            </li> 
-            <!-- Insert new city -->
-            <li class="nav-item">
-                <a href='../../sikaruApanel/city-add' id="insert_city" class="nav-link">
-                <i class="fa fa-plus nav-icon"></i>
-                <p>Insert City</p>
-                </a>
-            </li> 
-            <!-- View cities -->
-            <li class="nav-item">
-                <a href='../../sikaruApanel/city-view' id="view_city" class="nav-link">
-                <i class="fa fa-eye nav-icon"></i>
-                <p>View City</p>
-                </a>
-            </li>  
-            <!-- Insert new company -->
-            <li class="nav-item">
-                <a href='../../sikaruApanel/company-details' id="company-details" class="nav-link">
-                <i class="fa fa-plus nav-icon"></i>
-                <p>Insert Company</p>
-                </a>
-            </li> 
-            <!-- View companies -->
-            <li class="nav-item">
-                <a href='../../sikaruApanel/company_view' id="company_view" class="nav-link">
-                <i class="fa fa-eye nav-icon"></i>
-                <p>View Company</p>
-                </a>
-            </li>        
+            </li>      
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

@@ -165,7 +165,7 @@ class CompanyController extends Controller
             
         ]);
 
-        $newImagename = null;
+        $newImagename = $company->logo; //if no logo is choses, $newImagename remains same old one. good.
         if(request('logo') != null) {
             $newImagename = time() . '-' . request('company_name'). '.' . request('logo')->extension();
             request('logo')->move(public_path('images'),$newImagename);

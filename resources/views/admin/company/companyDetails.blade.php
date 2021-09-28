@@ -7,7 +7,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h2 class="m-0">Dashboard</h2>
+          <h2 class="m-0">Add Company</h2>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -23,7 +23,7 @@
 	<div style='padding: 10px 50px;'>
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Company Details</h3>
+                <!-- <h3 class="card-title">Company Details</h3> -->
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -71,6 +71,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Submit</button>
+                  <a href="{{ route('company.view')}}" role="button" class="btn btn-default float-right">See Companies</a>
                 </div>
                 <!-- /.card-footer -->
               </form>
