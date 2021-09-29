@@ -35,7 +35,7 @@
                 </div>
                 @endif
               <!-- form start -->
-              <form method='post' action='../update_city/{{$city->id}}'>
+              <form method='post' action="{{ route('city-update', $city->id) }}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group row">
@@ -48,7 +48,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
                   <button type="submit" class="btn btn-info">Update</button>
-                  <a href="{{ route('city-view')}}" role="button" class="btn btn-default float-right">See Cities</a>
+                  <a href="{{ route('city-view') }}" role="button" class="btn btn-default float-right">See Cities</a>
                 </div>
                 <!-- /.card-footer -->
               </form>

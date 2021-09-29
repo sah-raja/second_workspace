@@ -35,7 +35,7 @@
                 </div>
                 @endif
               <!-- form start -->
-              <form class="form-horizontal" method='post' action='city-add'>
+              <form class="form-horizontal" method='post' action="{{ route('city-add') }}">
                 @csrf
                 <div class="card-body">
                   <div class="form-group row">

@@ -24,7 +24,7 @@ Route::middleware(['access-control:admin'])->group(function () {
     Route::GET('/sikaruApanel/city-add', 'Admin\StaticTableDataInsert@insert_city')->name('city-add');
     Route::POST('/sikaruApanel/city-add', 'Admin\StaticTableDataInsert@create_city');
     Route::GET('/sikaruApanel/city-view', 'Admin\StaticTableDataInsert@view_city')->name('city-view');
-    Route::GET('/sikaruApanel/delete_city/{id}', 'Admin\StaticTableDataInsert@delete_city');
-    Route::GET('/sikaruApanel/update_city/{id}', 'Admin\StaticTableDataInsert@update_city');
-    Route::POST('/sikaruApanel/update_city/{id}', 'Admin\StaticTableDataInsert@set_city');
+    Route::GET('/sikaruApanel/delete_city/{id}', 'Admin\StaticTableDataInsert@delete_city')->name('city-delete');
+    Route::GET('/sikaruApanel/update_city/{id}', 'Admin\StaticTableDataInsert@update_city')->name('city-edit');
+    Route::POST('/sikaruApanel/update_city/{id}', 'Admin\StaticTableDataInsert@set_city')->name('city-update');;
 });

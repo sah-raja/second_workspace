@@ -44,8 +44,8 @@
                       <tr>
                         <td>{{$record->name}}</td>
                         <td>
-                          <a href='update_city/{{$record->id}}' role='button' class='btn btn-success'>Update</a>
-                          <a href='delete_city/{{$record->id}}' role='button' class='btn btn-danger'>Delete</a>
+                          <a href="{{ route('city-edit', $record->id) }}" role='button' class='btn btn-success'>Update</a>
+                          <a href="{{ route('city-delete', $record->id) }}" role='button' class='btn btn-danger'>Delete</a>
                         </td>
                       </tr>
                     @endforeach
