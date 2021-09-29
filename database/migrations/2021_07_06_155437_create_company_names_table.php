@@ -14,13 +14,13 @@ class CreateCompanyNamesTable extends Migration
     public function up()
     {
         Schema::create('company_names', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id()->autoIncrement();
             $table->string('name')->nullable();
             $table->string('slug')->nullable();
-            $table->integer('fk_city')->nullable();
+            $table->string('fk_city')->nullable();
             $table->string('location')->nullable();
             $table->string('branch')->nullable();
-            $table->integer('contact_details')->nullable();
+            $table->string('contact_details')->nullable();
             $table->string('logo')->nullable();
             $table->integer('status')->nullable();
             $table->integer('sort')->nullable();
